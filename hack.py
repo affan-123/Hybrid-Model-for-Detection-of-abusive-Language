@@ -132,10 +132,10 @@ from keras.layers import LSTM
 
 model.add(Dense(30,input_shape=(30,100)))
 model.add(LSTM(30))
-model.add(Dense(1,activation='sigmoid'))
+model.add(Dense(1,activation='relu'))
 
 model.compile(loss='binary_crossentropy',optimizer='adam',metrics=['accuracy'])
-batch_size = 64
+batch_size = 128
 model.fit(X_TRAIN,ytrain, batch_size=batch_size, epochs=30)
 model.save('abusive.h5')
 X_TEST=[]
