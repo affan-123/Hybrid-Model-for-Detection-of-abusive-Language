@@ -34,6 +34,8 @@ from sklearn.feature_extraction.text import CountVectorizer
 vect_cv = CountVectorizer(min_df=5, ngram_range=(1,2)).fit(xtrain)
 X_train_vectorized=vect_cv.transform(xtrain)
 
+# print(len(ypred))
+# print(len(y_test))
 
 
 
