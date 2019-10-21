@@ -34,8 +34,7 @@ from sklearn.feature_extraction.text import CountVectorizer
 vect_cv = CountVectorizer(min_df=5, ngram_range=(1,2)).fit(xtrain)
 X_train_vectorized=vect_cv.transform(xtrain)
 
-# print(len(ypred))
-# print(len(y_test))
+
 
 
 
@@ -99,11 +98,6 @@ else:
     print("Output: It is not an abusive sentence")
     mainarray.append(0)
 
-#
-#
-#
-# #
-# #
 
 X=df['tweet']
 from  sklearn.model_selection import train_test_split
@@ -137,20 +131,13 @@ model=Sequential()
 from keras.layers.embeddings import  Embedding
 from keras.layers import LSTM
 
-#model.add(Embedding(len(top_words),embed_vector_lenght,input_length=max_words))
-#learning_rate=0.01
 
 model.add(Dense(30,input_shape=(30,100)))
 model.add(LSTM(30))
 model.add(Dense(1,activation='sigmoid'))
-#model.add(Dense(1,activation='Softmax'))
-#print(model.summary())
 
 model.compile(loss='binary_crossentropy',optimizer='adam',metrics=['accuracy'])
 batch_size = 64
-# # num_epochs = 3
-# # X_valid, y_valid = X_train[:batch_size], ytrain[:batch_size]
-# # X_train2, y_train2 = X_train[batch_size:], ytrain[batch_size:]
 model.fit(X_TRAIN,ytrain, batch_size=batch_size, epochs=30)
 model.save('abusive.h5')
 X_TEST=[]
@@ -173,17 +160,8 @@ X_TEST=np.asarray(X_TEST)
 score=model.evaluate(X_TEST,ytest,verbose=0)
 from sklearn.metrics import classification_report
 print (model.predict(X_TEST))
-#print(classification_report(ytest,np.asarray(model.predict(X_TEST)).ravel()))
-#print(score[1]*100)
-
-
-# from keras.models import load_model
-# model=load_model('abusive.h5')
-# score=model.evaluate(xtest,ytest,verbose=0)
-# print(score[1]*100)
 
 import numpy as np
-#str="Thats a bad product"
 strvec=[]
 for w in mainstr.split():
     strvec.append(model1[w])
@@ -216,14 +194,7 @@ print(pred_LR_TF)
 print('LSTM')
 print(pred_LSTM)
 
-# hybrid=[]
-# hybrid.append(pred_LR_CV)
-# hybrid.append(pred_LR_TF)
-# hybrid.append(pred_LSTM)
-# hybrid =np.asarray(hybrid)
-# print("hybrid")
-# print (hybrid)
-#
+
 hybrid=[]
 for i in range (2902):
     temp=[]
