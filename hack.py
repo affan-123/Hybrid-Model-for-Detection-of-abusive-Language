@@ -47,7 +47,7 @@ from sklearn.metrics import roc_auc_score
 print ("Logistics Regression:",roc_auc_score(y_test,predictionsLR))
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import cross_val_score
-RF=RandomForestClassifier(n_estimators=100)
+RF=RandomForestClassifier(n_estimators=220)
 RF.fit(X_train_vectorized,y_train)
 predictionsRF=RF.predict(vect_cv.transform(X_test))
 print ("Random Forest:",roc_auc_score(y_test,predictionsRF))
@@ -80,7 +80,7 @@ print('Logistic Regression: ', roc_auc_score(y_test, predictions))
 
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import cross_val_score
-RF=RandomForestClassifier(n_estimators=100)
+RF=RandomForestClassifier(n_estimators=220)
 RF.fit(X_train_vectorized,y_train)
 predictionsRF=RF.predict(vect_tf.transform(X_test))
 print ("RandomForest:",roc_auc_score(y_test,predictionsRF))
