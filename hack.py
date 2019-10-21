@@ -31,7 +31,7 @@ Ycon=df['confidence']
 xtrain,X_test,y_train,y_test=train_test_split(X,Y,test_size=0.4)
 print("Using CountVectorizer :")
 from sklearn.feature_extraction.text import CountVectorizer
-vect_cv = CountVectorizer(min_df=5, ngram_range=(1,2)).fit(xtrain)
+vect_cv = CountVectorizer(min_df=5, ngram_range=(1,3)).fit(xtrain)
 X_train_vectorized=vect_cv.transform(xtrain)
 
 
@@ -47,7 +47,7 @@ from sklearn.metrics import roc_auc_score
 print ("Logistics Regression:",roc_auc_score(y_test,predictionsLR))
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import cross_val_score
-RF=RandomForestClassifier(n_estimators=100)
+RF=RandomForestClassifier(n_estimators=150)
 RF.fit(X_train_vectorized,y_train)
 predictionsRF=RF.predict(vect_cv.transform(X_test))
 print ("Random Forest:",roc_auc_score(y_test,predictionsRF))
@@ -108,10 +108,8 @@ sentences=[]
 for w in df['tweet']:
       sentences.append(w.split())
 model1=wc(sentences,min_count=1)
-#print(model1['Warning'])
 X_TRAIN=[]
 import numpy as np
-#Sent=df['tweet']
 for i in xtrain:
     sentence=[]
     for words in i.split():
