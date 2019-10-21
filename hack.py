@@ -204,11 +204,12 @@ for i in range (2902):
 hybrid=np.asarray(hybrid)
 print("hybrid")
 print(hybrid.shape)
-print("final accuracy")
+print("final accuracy of hybrid model is")
 print(roc_auc_score(ytest,hybrid))
 
 
 from sklearn.metrics import classification_report
+print ("Classification report is as follows")
 print(classification_report(ytest,hybrid))
 print(classification_report(ytest,pred_LSTM))
 
